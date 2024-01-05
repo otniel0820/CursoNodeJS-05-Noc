@@ -17,10 +17,10 @@ export class Server {
     const emailService = new EmailService();
 
     //! En este caso lo estamos haciendo igual que en el codigo de abajo epro haciendo la implementacion de nustro nuevo caso de uso que creamos que en este caso es sendEmailLogs
-    new SendEmailLogs(emailService, fileSystemLogRepository).execute([
-      "otniel.lascano.dev@gmail.com",
-      "otniellascano@gmail.com",
-    ]);
+    // new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+    //   "otniel.lascano.dev@gmail.com",
+    //   "otniellascano@gmail.com",
+    // ]);
     //! Manda un correo con el cuerpo que nosotros le digamos en este caso es el htmlBody
     // emailService.sendEmail({
     //   to: 'otniellascano@gmail.com',

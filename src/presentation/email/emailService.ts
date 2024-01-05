@@ -24,11 +24,7 @@ export class EmailService {
     },
   });
 
-  constructor(
-    
-  ){
-
-  }
+  constructor() {}
 
   async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { to, subject, htmlBody, attachements = [] } = options;
@@ -41,25 +37,13 @@ export class EmailService {
         attachments: attachements,
       });
 
-      const log = new LogEntity({
-        level: LogSeverityLevel.low,
-        message: `Email send ${to}`,
-        origin: 'email.service.ts'
-      })
-     
       return true;
     } catch (error) {
-      const log = new LogEntity({
-        level: LogSeverityLevel.high,
-        message: `Email not send`,
-        origin: 'email.service.ts'
-      })
-      
       return false;
     }
   }
 
- async sendEmailWithFileSystemLogs(to: string | string[]) {
+  async sendEmailWithFileSystemLogs(to: string | string[]) {
     const subject = "Logs del servidor";
     const htmlBody = `
     <h1>Logs de sistema</h1>
@@ -81,6 +65,6 @@ export class EmailService {
         path: "./logs/logs-medium.log",
       },
     ];
-   return this.sendEmail({ to, subject, attachements, htmlBody  });
+    return this.sendEmail({ to, subject, attachements, htmlBody });
   }
 }
