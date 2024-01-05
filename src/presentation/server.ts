@@ -1,5 +1,5 @@
-
 import { CheckService } from "../domain/useCases/checks/checksService";
+import { SendEmailLogs } from "../domain/useCases/email/sendEmailLogs";
 import { FileSystemDatasource } from "../infrastructure/datasources/fileSystem.datasource";
 import { LogRepositoryImpl } from "../infrastructure/repository/log.repository.impl";
 import { CronService } from "./cron/cronService";
@@ -7,17 +7,21 @@ import { EmailService } from "./email/emailService";
 
 const fileSystemLogRepository = new LogRepositoryImpl(
   new FileSystemDatasource()
-)
+);
 
 export class Server {
   public static start() {
     console.log("Server started...");
-    
-    
-    //Mandar email
-    const emailService = new EmailService()
 
-    // Manda un correo con el cuerpo que nosotros le digamos en este caso es el htmlBody
+    //Mandar email
+    const emailService = new EmailService();
+
+    //! En este caso lo estamos haciendo igual que en el codigo de abajo epro haciendo la implementacion de nustro nuevo caso de uso que creamos que en este caso es sendEmailLogs
+    new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+      "otniel.lascano.dev@gmail.com",
+      "otniellascano@gmail.com",
+    ]);
+    //! Manda un correo con el cuerpo que nosotros le digamos en este caso es el htmlBody
     // emailService.sendEmail({
     //   to: 'otniellascano@gmail.com',
     //   subject: 'logs de sistema',
@@ -29,12 +33,12 @@ export class Server {
     //   `
     // })
 
-    //!Mandar correo con archivos 
-    emailService.sendEmailWithFileSystemLogs([
-      'otniellascano@gmail.com','otniel.lascano.dev@gmail.com'
-    ])
+    //!Mandar correo con archivos
+    // emailService.sendEmailWithFileSystemLogs([
+    //   'delgadojose178@gmail.com','otniellascano@gmail.com'
+    // ])
 
-    // CronService.createJob("*/5 * * * * *", 
+    // CronService.createJob("*/5 * * * * *",
     // () => {
     //     const url = "https://www.google.com"
 

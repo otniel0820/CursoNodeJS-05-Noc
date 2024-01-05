@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { envs } from "../../config/plugins/envs.plugin";
+import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
 interface SendMailOptions {
   to: string | string[];
@@ -23,6 +24,12 @@ export class EmailService {
     },
   });
 
+  constructor(
+    
+  ){
+
+  }
+
   async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { to, subject, htmlBody, attachements = [] } = options;
 
@@ -34,8 +41,20 @@ export class EmailService {
         attachments: attachements,
       });
 
+      const log = new LogEntity({
+        level: LogSeverityLevel.low,
+        message: `Email send ${to}`,
+        origin: 'email.service.ts'
+      })
+     
       return true;
     } catch (error) {
+      const log = new LogEntity({
+        level: LogSeverityLevel.high,
+        message: `Email not send`,
+        origin: 'email.service.ts'
+      })
+      
       return false;
     }
   }
@@ -45,8 +64,8 @@ export class EmailService {
     const htmlBody = `
     <h1>Logs de sistema</h1>
     <p>Este es un log de prueba.</p>
-    <p>Este es un log de prueba.</p>
-    <p>Este es un log de prueba.</p>
+    <p>Soy tu papa en Programando</p>
+    <p>Esta es una prueba de enviar correos electronicos mediante una aplicacion de monitoreo NOC para comprobar los errores del sistema mediante logs y para demostrarte una vez mas que soy tu papa tanto en frontend como en backend jajaja  ahi te adjunto los archivos de los logs pa que veas los errores que tienes en el sistema ajjajaja </p>
     `;
     const attachements: Attachements[] = [
       {
