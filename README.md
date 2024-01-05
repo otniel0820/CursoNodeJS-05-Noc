@@ -13,3 +13,5 @@ MAILER_SECRET_KEY=
 PROD=false
 
 ```
+3. Instalar dependencias `npm install`
+4. Correr la aplicación en modo desarrollo: `npm run dev`.

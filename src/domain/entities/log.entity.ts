@@ -4,23 +4,38 @@ export enum LogSeverityLevel {
   high = "high",
 }
 
+
+export interface LogEntityOptions{
+   level: LogSeverityLevel; //enum
+   message: string;
+   createdAt?: Date;
+   origin: string;
+}
 export class LogEntity {
   public level: LogSeverityLevel; //enum
   public message: string;
   public createdAt: Date;
+  public origin: string;
 
-  constructor(message: string, level: LogSeverityLevel) {
+  constructor(options:LogEntityOptions) {
+const {message,level,origin,createdAt= new Date()}= options
     this.message = message;
     this.level = level;
-    this.createdAt = new Date();
+    this.createdAt = createdAt;
+    this.origin = origin;
   }
 
   //Con este metodo deberiamos estar recibiendo toda la data de los log en formato json como tipo string y con el json parse lo convertimos a objeto
   static fromJson = (json: string): LogEntity => {
-    const { message, level, createdAt } = JSON.parse(json);
+    const { message, level, createdAt, origin } = JSON.parse(json);
 
-    const log = new LogEntity(message, level);
-    log.createdAt = new Date(createdAt);
+    const log = new LogEntity({
+      message: message,
+      level: level,
+      createdAt: createdAt,
+      origin: origin
+    });
+   
     return log;
   };
 }
