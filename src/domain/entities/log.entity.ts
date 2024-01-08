@@ -25,7 +25,8 @@ export class LogEntity {
   }
 
   //Con este metodo deberiamos estar recibiendo toda la data de los log en formato json como tipo string y con el json parse lo convertimos a objeto
-  static fromJson = (json: string): LogEntity => {
+  static fromJson = (json: string ): LogEntity => {
+    json = (json === '')? '{}':json
     const { message, level, createdAt, origin } = JSON.parse(json);
 
     const log = new LogEntity({

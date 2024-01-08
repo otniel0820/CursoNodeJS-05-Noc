@@ -8,8 +8,8 @@ import { CronService } from "./cron/cronService";
 import { EmailService } from "./email/emailService";
 
 const logRepository = new LogRepositoryImpl(
-  new FileSystemDatasource()
-  // new MongoLogDatasource()
+  // new FileSystemDatasource()
+  new MongoLogDatasource()
 );
 
 export class Server {
