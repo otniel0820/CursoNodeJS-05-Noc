@@ -11,6 +11,7 @@ import { Server } from "./presentation/server";
 
 async function main() {
 
+  //cadena de conexion a mongo
   await MongoDatabse.connect({
     mongoUrl: envs.MONGO_URL,
     dbName: envs.MONGO_DB_NAME
@@ -33,7 +34,7 @@ async function main() {
   
   
 
-  // Server.start();
+  Server.start();
   // console.log( envs);
   
 }

@@ -6,3 +6,6 @@
 {"message":"Email send otniellascano@gmail.com,otniel.lascano.dev@gmail.com","level":"low","createdAt":"2024-01-05T13:42:37.607Z","origin":"email.service.ts"}
 {"message":"Email send delgadojose178@gmail.com,otniellascano@gmail.com","level":"low","createdAt":"2024-01-05T14:04:42.482Z","origin":"email.service.ts"}
 {"message":"Log email sent","level":"low","createdAt":"2024-01-05T14:15:57.459Z","origin":"send-email-logs.ts"}
+{"message":"Service https://www.google.com working","level":"low","createdAt":"2024-01-08T23:18:55.180Z","origin":"check-service.ts"}
+{"message":"Service https://www.google.com working","level":"low","createdAt":"2024-01-08T23:20:40.155Z","origin":"check-service.ts"}
+{"message":"Service https://www.google.com working","level":"low","createdAt":"2024-01-08T23:20:45.072Z","origin":"check-service.ts"}
