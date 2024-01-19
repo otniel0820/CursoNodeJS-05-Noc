@@ -10,7 +10,12 @@ El objetivo es crear una serie de tareas usando Arquitectura Limpia con Typescri
 ```
 docker compose up -d
 ```
-5. Correr la aplicación en modo desarrollo: `npm run dev`.
+5. Ejecutar comando para generar migraciones de prisma para migrar postgre en caso de que no haya base de datos ya creada
+
+```
+npx prisma migrate dev
+```
+6. Correr la aplicación en modo desarrollo: `npm run dev`.
 
 #Obtener Gmail key
 
