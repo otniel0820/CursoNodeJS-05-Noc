@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1705701783777" clover="3.2.0">
-  <project timestamp="1705701783778" name="All files">
-    <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="16" coveredelements="16" complexity="0" loc="16" ncloc="16" packages="1" files="1" classes="1"/>
-    <file name="envs.plugin.ts" path="C:\Users\Otniel.dev\Desktop\GammaTech\CursoNodeJS\05-noc\src\config\plugins\envs.plugin.ts">
-      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+<coverage generated="1705706602348" clover="3.2.0">
+  <project timestamp="1705706602348" name="All files">
+    <metrics statements="23" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1" elements="26" coveredelements="22" complexity="0" loc="23" ncloc="23" packages="1" files="1" classes="1"/>
+    <file name="init.ts" path="C:\Users\Otniel.dev\Desktop\GammaTech\CursoNodeJS\05-noc\src\data\mongoDb\init.ts">
+      <metrics statements="23" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -12,14 +12,21 @@
       <line num="6" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
       <line num="8" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
+      <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="18" count="2" type="cond" truecount="0" falsecount="1"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
