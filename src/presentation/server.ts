@@ -1,16 +1,29 @@
-import { LogSeverityLevel } from "../domain/entities/log.entity";
-import { CheckService } from "../domain/useCases/checks/checksService";
-import { SendEmailLogs } from "../domain/useCases/email/sendEmailLogs";
+import { CheckServiceMultiple } from "../domain/useCases/checks/checksServiceMultiple";
 import { FileSystemDatasource } from "../infrastructure/datasources/fileSystem.datasource";
 import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
+import { PosgresLogDatasource } from "../infrastructure/datasources/postgre-log.datasource";
 import { LogRepositoryImpl } from "../infrastructure/repository/log.repository.impl";
 import { CronService } from "./cron/cronService";
 import { EmailService } from "./email/emailService";
 
-const logRepository = new LogRepositoryImpl(
-  // new FileSystemDatasource()
+//! Repositorio que trabajan con el caso de uso individualmente cada uno
+// const logRepository = new LogRepositoryImpl(
+//   new FileSystemDatasource()
+//   new MongoLogDatasource()
+//   new PosgresLogDatasource()
+// );
+
+//! Repositorio que trabaja con el caso de uso multiple
+
+const fsLogRepository = new LogRepositoryImpl(
+  new FileSystemDatasource()
+)
+const mongoLogRepository = new LogRepositoryImpl(
   new MongoLogDatasource()
-);
+)
+const postgreLogRepository = new LogRepositoryImpl(
+  new PosgresLogDatasource()
+)
 
 export class Server {
   public static async start() {
@@ -40,10 +53,10 @@ export class Server {
     // emailService.sendEmailWithFileSystemLogs([
     //   'delgadojose178@gmail.com','otniellascano@gmail.com'
     // ])
-    const logs = await logRepository.getLogs(LogSeverityLevel.low)
-    console.log(logs);
+    // const logs = await logRepository.getLogs(LogSeverityLevel.low)
+    // console.log(logs);
     
-
+//!Caso de uso individual trabaja hace que el programa sea tolerante a cambios y pueda trabajar con diferentes bases de datos solomodificando nuestro logRepository
     // CronService.createJob("*/5 * * * * *",
     // () => {
     //     const url = "https://www.google.com"
@@ -56,5 +69,19 @@ export class Server {
 
     //   // new CheckService().execute('http://localhost:3000') //! Servidor y endpoint con json-Server
     // });
+
+//!Caso de uso multiple que nos permite hacer un array de todas las bases de datos que queramos implementar y que nuestro caso de uso multiple pueda trabajar con todas a la vez
+    CronService.createJob("*/5 * * * * *",
+    () => {
+        const url = "https://www.google.com"
+
+      new CheckServiceMultiple(
+        [fsLogRepository,mongoLogRepository,postgreLogRepository],
+        () => console.log(`${url} is ok`),
+        (error) => console.error(`Error: ${error}`)
+      ).execute(url);
+
+      // new CheckService().execute('http://localhost:3000') //! Servidor y endpoint con json-Server
+    });
   }
 }
