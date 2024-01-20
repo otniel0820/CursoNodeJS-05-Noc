@@ -7,3 +7,4 @@ postgres/
 mongo-test/
 postgres-test/
 .env.test
+coverage/
