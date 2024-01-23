@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { envs } from "../src/config/plugins/envs.plugin";
+import  envs from "../src/config/plugins/envs.plugin";
 import { MongoDatabse } from "../src/data/mongoDb/init";
 import { LogModel } from '../src/data/mongoDb/models/log.model';
 

@@ -1,4 +1,4 @@
-import { envs } from "../src/config/plugins/envs.plugin";
+import  envs  from "../src/config/plugins/envs.plugin";
 
 describe("envs.pluginn.ts", () => {
   test("should return env options", () => {
@@ -8,7 +8,7 @@ describe("envs.pluginn.ts", () => {
       MAILER_EMAIL: "otniellascano@gmail.com",
       MAILER_SECRET_KEY: "pheughnkzbevglbt",
       PROD: false,
-      MONGO_URL: "mongodb://otniel:20603955@localhost:27017",
+      MONGO_URL: "mongodb://otniel:123456789@localhost:27017",
       MONGO_DB_NAME: "NOC-TEST",
       MONGO_USER: "otniel",
       MONGO_PASS: "123456789",
